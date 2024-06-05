@@ -12,5 +12,15 @@ export class MyPipelineStack extends cdk.Stack {
     // const queue = new sqs.Queue(this, 'MyPipelineQueue', {
     //   visibilityTimeout: cdk.Duration.seconds(300)
     // });
+    
+    
+    const pipeline = new CodePipeline(this, 'Pipeline', {
+      pipelineName: 'MyPipeline',
+      synth: new ShellStep('Synth', {
+        input: CodePipelineSource.gitHub('ruwanindika/my_cdk', 'main'),
+        commands: ['npm ci', 'npm run build', 'npx cdk synth']
+      })
+    });
+    
   }
 }
