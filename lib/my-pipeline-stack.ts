@@ -17,7 +17,7 @@ export class MyPipelineStack extends cdk.Stack {
     const pipeline = new CodePipeline(this, 'Pipeline', {
       pipelineName: 'MyPipeline',
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub('ruwanindika/my_cdk', 'main'),
+        input: CodePipelineSource.gitHub('ruwanindika/my-pipeline', 'main'),
         commands: ['npm ci', 'npm run build', 'npx cdk synth']
       })
     });
