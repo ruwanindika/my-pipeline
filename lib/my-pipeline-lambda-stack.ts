@@ -8,7 +8,7 @@ export class MyLambdaStack extends cdk.Stack {
 
       new Function(this, 'LambdaFunction', {
         runtime: Runtime.PYTHON_3_12,
-        handler: 'lambda.handler',
+        handler: 'index.handler',
         code: new InlineCode('print("my pipeline")')
       });
     }
